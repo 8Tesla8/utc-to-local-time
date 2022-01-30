@@ -14,15 +14,13 @@ export class UtcConverterService {
         var browserLanguage = navigator.language; 
 
         if (format === UtcToLocalTimeFormat.SHORT) {
-            let formatter = new Intl.DateTimeFormat(browserLanguage);
-            let date = formatter.format(new Date(utcDate));
+            let date = new Date(utcDate).toLocaleDateString(browserLanguage);
             let time = new Date(utcDate).toLocaleTimeString(browserLanguage);
 
             return `${date}, ${time}`;
         } 
         else if (format === UtcToLocalTimeFormat.SHORT_DATE) {
-            let formatter = new Intl.DateTimeFormat(browserLanguage);
-            return formatter.format(new Date(utcDate));
+            return new Date(utcDate).toLocaleDateString(browserLanguage);
         } 
         else if (format === UtcToLocalTimeFormat.SHORT_TIME) {
             return new Date(utcDate).toLocaleTimeString(browserLanguage);
