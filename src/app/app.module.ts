@@ -4,17 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UtcConverterService } from './utc-converter-service/utc-converter.service';
+import { UtcToLocalTimePipe } from './utc-pipe/utc-to-local-time.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UtcToLocalTimePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    UtcConverterService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

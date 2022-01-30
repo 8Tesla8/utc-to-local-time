@@ -1,0 +1,26 @@
+For js we need the count of milliseconds
+
+Try:
+
+return DateTime.UtcNow.Subtract(new DateTime(1970, 1,1)).TotalMilliseconds
+Edit: true UTC is better, but then we need to be consistent
+
+return DateTime.UtcNow
+               .Subtract(new DateTime(1970,1,1,0,0,0,DateTimeKind.Utc))
+               .TotalMilliseconds;
+
+====
+For web api we can specify the serialisation 
+
+using Newtonsoft.Json;
+
+
+// convert to UTC ISO-ISO-8601
+services.AddControllersWithViews()
+.AddNewtonsoftJson(options => options.SerializerSettings.DateTimeZoneHandling
+= DateTimeZoneHandling.Utc);
+
+services.AddControllers()
+.AddNewtonsoftJson(options => options.SerializerSettings.DateTimeZoneHandling
+= DateTimeZoneHandling.Utc);
+
